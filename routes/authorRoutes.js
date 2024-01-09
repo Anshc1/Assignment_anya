@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const Author = require('../models/Author'); // adjust the path as necessary
+const Author = require('../models/Author'); 
 const Books = require('../models/Book')
 const bcrypt = require('bcryptjs');
 const router = express.Router();
@@ -28,10 +28,10 @@ router.get('/', async (req, res) => {
         const authors = await Author.aggregate([
             {
                 $lookup: {
-                    from: 'books', // the collection name in MongoDB
-                    localField: '_id', // field from the 'authors' collection
-                    foreignField: 'author', // field from the 'books' collection
-                    as: 'books' // output array field
+                    from: 'books',
+                    localField: '_id', 
+                    foreignField: 'author', 
+                    as: 'books'
                 }
             },
             {
@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
         res.status(500).send({ message: 'Internal Server Error', error: error.message });
     }
 });
-router.get('check/:id', async (req, res) => {
+router.get('/check/:id', async (req, res) => {
     try {
         
         const authorId = req.params.id;

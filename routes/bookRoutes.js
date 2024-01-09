@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Book = require('../models/Book'); // Adjust path according to your project structure
+const Book = require('../models/Book'); 
 const authMiddleware = require('../middleware/authMiddleware');
 
 router.get('/', authMiddleware ,async (req, res) => {
@@ -11,7 +11,7 @@ router.get('/', authMiddleware ,async (req, res) => {
         res.status(500).send({ message: 'Internal Server Error', error: error.message });
     }
 });
-router.put('like/:id',authMiddleware , async (req, res) => {
+router.put('/like/:id',authMiddleware , async (req, res) => {
     try {
         const bookId = req.params.id;
         const book = await Book.findByIdAndUpdate(bookId, { $inc: { likes: 1 } }, { new: true });
@@ -26,7 +26,7 @@ router.put('like/:id',authMiddleware , async (req, res) => {
     }
 });
 
-router.put('unlike/:id', authMiddleware , async (req, res) => {
+router.put('/unlike/:id', authMiddleware , async (req, res) => {
     try {
         const bookId = req.params.id;
         const book = await Book.findByIdAndUpdate(bookId, { $inc: { likes: -1 } }, { new: true });

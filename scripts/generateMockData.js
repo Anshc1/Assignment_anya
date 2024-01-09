@@ -1,6 +1,6 @@
 const {faker} = require('@faker-js/faker');
-const Author = require('../models/Author'); // Adjust the path as necessary
-const Book = require('../models/Book'); // Adjust the path as necessary
+const Author = require('../models/Author'); 
+const Book = require('../models/Book'); 
 const mongoose = require('mongoose');
 
 const createMockData = async () => {
